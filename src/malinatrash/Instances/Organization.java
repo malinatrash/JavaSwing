@@ -1,4 +1,4 @@
-package malinatrash;
+package malinatrash.Instances;
 
 import java.util.Random;
 
@@ -28,5 +28,5 @@ public abstract class Organization {
         return buffer.toString();
     }
 
-    public abstract void processOperation();
+    public abstract String processOperation();
 }

@@ -1,4 +1,4 @@
-package malinatrash;
+package malinatrash.ConsoleInterface;
 
 import malinatrash.Instances.AircraftFactory;
 import malinatrash.Instances.InsuranceCompany;

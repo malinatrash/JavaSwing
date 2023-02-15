@@ -1,6 +1,6 @@
 package malinatrash.App;
 
-import malinatrash.Menu;
+import malinatrash.ConsoleInterface.Menu;
 import malinatrash.Views.RootView;
 
 public class Main {

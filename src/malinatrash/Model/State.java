@@ -29,16 +29,17 @@ public class State {
         return ("Компании с выбранным именем не существует!");
     }
 
-    public static void doAllActivities() {
+    public static StringBuilder doAllActivities() {
+        StringBuilder message = new StringBuilder();
         if (companies.isEmpty()) {
-            System.out.println("Для этого добавьте хотя бы одну компанию...");
-            return;
+            return new StringBuilder(("Для этого добавьте хотя бы одну компанию..."));
         }
         System.out.println();
         for (Organization company: companies) {
-            company.processOperation();
+            message.append(company.processOperation());
         }
-        System.out.println();
+        message.append("\n");
+        return message;
     }
 
     public static void getCompaniesList() {

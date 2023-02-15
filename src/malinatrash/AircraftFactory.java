@@ -11,7 +11,7 @@ public class AircraftFactory extends Organization {
     }
 
     @Override
-    public void processOperation() {
-        System.out.println("Авиазавод под названием " + getName() + " построил новый самолет под названием " + craftAirPlane());
+    public String processOperation() {
+        return ("Авиазавод под названием " + getName() + " построил новый самолет под названием " + craftAirPlane());
     }
 }

@@ -11,7 +11,7 @@ public class InsuranceCompany extends Organization {
     }
 
     @Override
-    public void processOperation() {
-        System.out.println("Страховая компания под названием " + getName() + " застраховала человека с ID: " + insuranceHuman());
+    public String processOperation() {
+        return ("Страховая компания под названием " + getName() + " застраховала человека с ID: " + insuranceHuman());
     }
 }

@@ -1,10 +1,12 @@
-package malinatrash;
+package malinatrash.Model;
+
+import malinatrash.Organization;
 
 import java.util.ArrayList;
 
 public class State {
 
-    protected static final ArrayList<Organization> companies = new ArrayList<Organization>();
+    public static final ArrayList<Organization> companies = new ArrayList<>();
 
     public static void deleteSelectedCompany(String name) {
         for (Organization company: companies) {
@@ -17,15 +19,14 @@ public class State {
         System.out.println("Компании с выбранным именем не существует!");
     }
 
-    public static void doSelectedActivity(String name) {
+    public static String doSelectedActivity(String name) {
 
         for (Organization company: companies) {
             if (company.getName() == null ? name == null : company.getName().equals(name)) {
-                company.processOperation();
-                return;
+                return company.processOperation();
             }
         }
-        System.out.println("Компании с выбранным именем не существует!");
+        return ("Компании с выбранным именем не существует!");
     }
 
     public static void doAllActivities() {

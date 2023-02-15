@@ -1,5 +1,7 @@
 package malinatrash;
 
+import malinatrash.Model.State;
+
 import java.util.Scanner;
 
 public class Menu {

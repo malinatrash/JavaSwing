@@ -1,8 +1,14 @@
 package malinatrash.Views;
 
+<<<<<<< HEAD
 import malinatrash.Instances.AircraftFactory;
 import malinatrash.Instances.InsuranceCompany;
 import malinatrash.Instances.ShipbuildingCompany;
+=======
+import malinatrash.AircraftFactory;
+import malinatrash.InsuranceCompany;
+import malinatrash.ShipbuildingCompany;
+>>>>>>> origin/master
 import malinatrash.Model.State;
 
 import javax.swing.*;

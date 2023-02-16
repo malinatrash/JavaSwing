@@ -7,30 +7,22 @@ import java.awt.*;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class FindCompanyView extends JFrame {
-    JTextField companyName = new JTextField(35);
-    FindCompanyView() {
-        setTitle("Поиск компании");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-        int width = 500;
-        int height = 150;
-        setBounds((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
-        setVisible(false);
-        setupLayout();
-    }
-    private void setupLayout() {
-        JPanel panel = new JPanel();
-        add(panel);
-        addTextField(panel);
-        addButton(panel);
+public class FindCompanyView extends View {
+    FindCompanyView(int width, int height, String title) {
+        super(width, height, title);
     }
 
-    private void addTextField(JPanel panel) {
+    @Override
+    public void viewDidLoad() {
+        super.viewDidLoad();
+        setVisible(false);
+        JPanel panel = new JPanel();
+        add(panel);
+        JTextField companyName = new JTextField(35);
         panel.add(companyName);
+        addButton(panel, companyName);
     }
-    private void addButton(JPanel panel) {
+    private void addButton(JPanel panel, JTextField companyName) {
         JButton findButton = new JButton("Выполнить действие");
         findButton.addActionListener(e -> {
             setVisible(false);

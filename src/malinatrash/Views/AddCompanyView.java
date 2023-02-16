@@ -7,32 +7,25 @@ import malinatrash.Instances.ShipbuildingCompany;
 import malinatrash.Model.State;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class AddCompanyView extends JFrame {
-    JTextField companyName = new JTextField(35);
+public class AddCompanyView extends View {
     private boolean isAircraft = false;
     private boolean isInsurance = false;
     private boolean isShipbuilding = false;
-    AddCompanyView() {
-        setTitle("Добавление компании");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-        int width = 500;
-        int height = 150;
-        setBounds((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
-        setVisible(false);
-        setupLayout();
+    AddCompanyView(int width, int height, String title) {
+        super(width, height, title);
     }
-    private void setupLayout() {
+
+    @Override
+    public void viewDidLoad() {
+        super.viewDidLoad();
+        setVisible(false);
         JPanel panel = new JPanel();
         add(panel);
-
         addRadioButtons(panel);
-        addTextField(panel);
-        addButton(panel);
-
+        JTextField companyName = new JTextField(35);
+        panel.add(companyName);
+        addButton(panel, companyName);
         companyName.setEditable(isOnlyOne());
     }
     private void addRadioButtons(JPanel panel) {
@@ -72,19 +65,18 @@ public class AddCompanyView extends JFrame {
         panel.add(isAircraft);
         panel.add(isShipbuilding);
     }
-    private void addTextField(JPanel panel) {
-//        companyName.
-        panel.add(companyName);
+    private JTextField getTextField() {
+        return new JTextField(35);
     }
-    private void addButton(JPanel panel) {
+    private void addButton(JPanel panel, JTextField button) {
         JButton addButton = new JButton("Добавить");
         addButton.addActionListener(e -> {
             if (isInsurance) {
-                State.companies.add(new InsuranceCompany(companyName.getText()));
+                State.companies.add(new InsuranceCompany(button.getText()));
             } else if (isAircraft) {
-                State.companies.add(new AircraftFactory(companyName.getText()));
+                State.companies.add(new AircraftFactory(button.getText()));
             } else if (isShipbuilding) {
-                State.companies.add(new ShipbuildingCompany(companyName.getText()));
+                State.companies.add(new ShipbuildingCompany(button.getText()));
             }
             setVisible(false);
             State.getCompaniesList();
@@ -101,7 +93,6 @@ public class AddCompanyView extends JFrame {
             count++;
         }
         if (count == 1) {
-            companyName.setEditable(true);
             return true;
         }
         return false;

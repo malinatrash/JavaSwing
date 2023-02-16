@@ -1,28 +1,19 @@
 package malinatrash.Views;
 
-import malinatrash.Model.State;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class RootView extends JFrame {
+public class MainView extends View {
 //    AllActivitiesView allActivitiesView = new AllActivitiesView();
-    AddCompanyView addCompanyView = new AddCompanyView();
-    FindCompanyView findCompanyView = new FindCompanyView();
-    public RootView() {
-        setUpView();
+    AddCompanyView addCompanyView = new AddCompanyView(500, 120, "Добавить компанию");
+    FindCompanyView findCompanyView = new FindCompanyView(500, 120, "Найти компанию");
+    public MainView(int width, int height, String title) {
+        super(width, height, title);
     }
-    private void setUpView() {
-        setTitle("JavaSwing");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int screenHeight =  Toolkit.getDefaultToolkit().getScreenSize().height;
-        int width = 800;
-        int height = 600;
-        setBounds((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
-        setVisible(true);
-
+    @Override
+    public void viewDidLoad() {
+        super.viewDidLoad();
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         add(buttonsPanel);
@@ -41,9 +32,7 @@ public class RootView extends JFrame {
 //            allActivitiesView.setText(State.doAllActivities());
 //            allActivitiesView.setVisible(true);
 //        });
-
     }
-
     private void addTable() {
 
     }

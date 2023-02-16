@@ -1,12 +1,14 @@
 package malinatrash.Views;
 
+import malinatrash.Model.State;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainView extends View {
-//    AllActivitiesView allActivitiesView = new AllActivitiesView();
-    AddCompanyView addCompanyView = new AddCompanyView(500, 120, "Добавить компанию");
-    FindCompanyView findCompanyView = new FindCompanyView(500, 120, "Найти компанию");
+    AllActivitiesView allActivitiesView = new AllActivitiesView(600, 200, "Все активности");
+    AddCompanyView addCompanyView = new AddCompanyView(500, 130, "Добавить компанию");
+    FindCompanyView findCompanyView = new FindCompanyView(500, 100, "Найти компанию");
     public MainView(int width, int height, String title) {
         super(width, height, title);
     }
@@ -28,12 +30,16 @@ public class MainView extends View {
 
         JButton doAllActivitiesButton = new JButton("Посмотреть активности всех компаний");
         buttonsPanel.add(doAllActivitiesButton);
-//        doAllActivitiesButton.addActionListener(e -> {
-//            allActivitiesView.setText(State.doAllActivities());
-//            allActivitiesView.setVisible(true);
-//        });
-    }
-    private void addTable() {
+        doAllActivitiesButton.addActionListener(e -> {
+            allActivitiesView.updateData(State.doAllActivities());
+            allActivitiesView.setVisible(true);
+        });
 
+        JButton allCompaniesButton = new JButton("Посмотреть список всех компаний");
+        buttonsPanel.add(allCompaniesButton);
+        allCompaniesButton.addActionListener(e -> {
+            allActivitiesView.updateData(State.getCompaniesList());
+            allActivitiesView.setVisible(true);
+        });
     }
 }

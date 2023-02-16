@@ -8,6 +8,8 @@ import malinatrash.Model.State;
 
 import javax.swing.*;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class AddCompanyView extends View {
     private boolean isAircraft = false;
     private boolean isInsurance = false;
@@ -26,7 +28,6 @@ public class AddCompanyView extends View {
         JTextField companyName = new JTextField(35);
         panel.add(companyName);
         addButton(panel, companyName);
-        companyName.setEditable(isOnlyOne());
     }
     private void addRadioButtons(JPanel panel) {
         JRadioButton isAircraft = new JRadioButton("Авиастроительная");
@@ -65,12 +66,13 @@ public class AddCompanyView extends View {
         panel.add(isAircraft);
         panel.add(isShipbuilding);
     }
-    private JTextField getTextField() {
-        return new JTextField(35);
-    }
     private void addButton(JPanel panel, JTextField button) {
         JButton addButton = new JButton("Добавить");
         addButton.addActionListener(e -> {
+//            if (companyName.getText().isEmpty()) {
+//                showMessageDialog(null, "Введите название");
+//                return;
+//            }
             if (isInsurance) {
                 State.companies.add(new InsuranceCompany(button.getText()));
             } else if (isAircraft) {

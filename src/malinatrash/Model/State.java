@@ -29,24 +29,25 @@ public class State {
         return ("Компании с выбранным именем не существует!");
     }
 
-    public static StringBuilder doAllActivities() {
+    public static String doAllActivities() {
         StringBuilder message = new StringBuilder();
         if (companies.isEmpty()) {
-            return new StringBuilder(("Для этого добавьте хотя бы одну компанию..."));
+            return ("Для этого добавьте хотя бы одну компанию...");
         }
         System.out.println();
         for (Organization company: companies) {
             message.append(company.processOperation());
+            message.append("\n");
         }
-        message.append("\n");
-        return message;
+        return message.toString();
     }
 
-    public static void getCompaniesList() {
-        System.out.println();
+    public static String getCompaniesList() {
+        StringBuilder message = new StringBuilder();
         for (int i = 0; i < companies.size(); i++) {
-            System.out.println((i + 1) + " - " + companies.get(i).getName());
+            message.append(i + 1).append(" - ").append(companies.get(i).getName());
+            message.append("\n");
         }
-        System.out.println();
+        return message.toString();
     }
 }

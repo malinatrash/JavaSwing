@@ -34,7 +34,6 @@ public class FindCompanyView extends View {
         deleteButton.addActionListener(e -> {
             State.deleteSelectedCompany(companyName.getText());
             setVisible(false);
-            showMessageDialog(null, "Успешно");
         });
         panel.add(deleteButton);
     }

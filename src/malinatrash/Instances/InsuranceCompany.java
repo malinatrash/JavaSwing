@@ -4,6 +4,7 @@ public class InsuranceCompany extends Organization {
 
     public InsuranceCompany(String name) {
         super(name);
+        setType("Страховая компания");
     }
 
     private String insuranceHuman() {
@@ -12,6 +13,6 @@ public class InsuranceCompany extends Organization {
 
     @Override
     public String processOperation() {
-        return ("Страховая компания под названием " + getName() + " застраховала человека с ID: " + insuranceHuman());
+        return (getType() + " под названием " + getName() + " застраховала человека с ID: " + insuranceHuman());
     }
 }

@@ -5,13 +5,16 @@ import java.util.Random;
 public abstract class Organization {
 
     private final String name;
-
+    private String type;
     public Organization(String name) {
         this.name = name;
+        this.type = "";
     }
-
     public String getName() {
         return name;
+    }
+    public String getType() {
+        return type;
     }
 
     protected String getObjetName() {
@@ -27,6 +30,8 @@ public abstract class Organization {
 
         return buffer.toString();
     }
-
+    public void setType(String type) {
+        this.type = type;
+    }
     public abstract String processOperation();
 }

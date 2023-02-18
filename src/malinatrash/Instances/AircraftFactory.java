@@ -4,14 +4,13 @@ public class AircraftFactory extends Organization {
 
     public AircraftFactory(String name) {
         super(name);
+        setType("Авиазавод");
     }
-
-    private String craftAirPlane() {
-        return getObjetName();
-    }
-
     @Override
     public String processOperation() {
-        return ("Авиазавод под названием " + getName() + " построил новый самолет под названием " + craftAirPlane());
+        return (getType() + " под названием " + getName() + " построил новый самолет под названием " + craftAirPlane());
+    }
+    private String craftAirPlane() {
+        return getObjetName();
     }
 }

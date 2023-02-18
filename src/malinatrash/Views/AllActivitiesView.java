@@ -1,30 +1,30 @@
 package malinatrash.Views;
 
+import malinatrash.Model.State;
+import malinatrash.Model.TabelModelData;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-
-import static javax.swing.BoxLayout.Y_AXIS;
 
 public class AllActivitiesView extends View {
-    JLabel data = new JLabel("");
-//    String data = "";
     AllActivitiesView(int width, int height, String title) {
         super(width, height, title);
-        JPanel view = new JPanel();
-        add(view);
-        view.add(data);
-        JButton okButton = new JButton("OK");
-        okButton.addActionListener(e -> setVisible(false));
-        view.add(okButton);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
-    public String convertToMultiline(String orig) {
-        return "<html>" + orig.replaceAll("\n", "<br>");
+    public void getAllCompanies(State state) {
+        createTable(state, "Companies");
     }
-    @Override
-    public void viewDidLoad() {
+    public void getAllActivities(State state) {
+        createTable(state, "Activities");
     }
-    public void updateData(String newData) {
-        data.setText(convertToMultiline(newData));
+    private void createTable(State state, String type) {
+        JTable table = new JTable();
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(480, 300));
+        if (type.equals("Companies")) {
+            table.setModel(new TabelModelData(state, type));
+        }
+        table.setModel(new TabelModelData(state, type));
+        add(table);
     }
 }

@@ -3,13 +3,14 @@ package malinatrash.Views;
 import malinatrash.Model.State;
 
 import javax.swing.*;
-import java.awt.*;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class FindCompanyView extends View {
+    State state;
     FindCompanyView(int width, int height, String title) {
         super(width, height, title);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     @Override
@@ -25,13 +26,13 @@ public class FindCompanyView extends View {
         JButton findButton = new JButton("Выполнить действие");
         findButton.addActionListener(e -> {
             setVisible(false);
-            showMessageDialog(null, State.doSelectedActivity(companyName.getText()));
+            showMessageDialog(null, state.doSelectedActivity(companyName.getText()));
         });
         panel.add(findButton);
 
         JButton deleteButton = new JButton("Удалить");
         deleteButton.addActionListener(e -> {
-            State.deleteSelectedCompany(companyName.getText());
+            state.deleteSelectedCompany(companyName.getText());
             setVisible(false);
         });
         panel.add(deleteButton);

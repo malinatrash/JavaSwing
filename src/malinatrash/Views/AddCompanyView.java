@@ -8,14 +8,14 @@ import malinatrash.Model.State;
 
 import javax.swing.*;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
 public class AddCompanyView extends View {
+    State state;
     private boolean isAircraft = false;
     private boolean isInsurance = false;
     private boolean isShipbuilding = false;
     AddCompanyView(int width, int height, String title) {
         super(width, height, title);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class AddCompanyView extends View {
 
         isAircraft.addActionListener(e -> {
             chooseAircraft();
-            if (!isOnlyOne()) {
+            if (isOnlyOne()) {
                 this.isShipbuilding = false;
                 isShipbuilding.setSelected(false);
                 this.isInsurance = false;
@@ -44,7 +44,7 @@ public class AddCompanyView extends View {
         });
         isShipbuilding.addActionListener(e -> {
             chooseShipbuilding();
-            if (!isOnlyOne()) {
+            if (isOnlyOne()) {
                 this.isAircraft = false;
                 isAircraft.setSelected(false);
                 this.isInsurance = false;
@@ -53,7 +53,7 @@ public class AddCompanyView extends View {
         });
         isInsurance.addActionListener(e -> {
             chooseInsurance();
-            if (!isOnlyOne()) {
+            if (isOnlyOne()) {
                 this.isShipbuilding = false;
                 isShipbuilding.setSelected(false);
                 this.isAircraft = false;
@@ -68,19 +68,14 @@ public class AddCompanyView extends View {
     private void addButton(JPanel panel, JTextField button) {
         JButton addButton = new JButton("Добавить");
         addButton.addActionListener(e -> {
-//            if (companyName.getText().isEmpty()) {
-//                showMessageDialog(null, "Введите название");
-//                return;
-//            }
             if (isInsurance) {
-                State.companies.add(new InsuranceCompany(button.getText()));
+                state.addOrganization(new InsuranceCompany(button.getText()));
             } else if (isAircraft) {
-                State.companies.add(new AircraftFactory(button.getText()));
+                state.addOrganization(new AircraftFactory(button.getText()));
             } else if (isShipbuilding) {
-                State.companies.add(new ShipbuildingCompany(button.getText()));
+                state.addOrganization(new ShipbuildingCompany(button.getText()));
             }
             setVisible(false);
-            State.getCompaniesList();
         });
         panel.add(addButton);
     }
@@ -93,10 +88,7 @@ public class AddCompanyView extends View {
         } if (isShipbuilding) {
             count++;
         }
-        if (count == 1) {
-            return true;
-        }
-        return false;
+        return count != 1;
     }
 
     private void chooseAircraft() {

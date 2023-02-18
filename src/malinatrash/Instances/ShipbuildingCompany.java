@@ -4,6 +4,7 @@ public class ShipbuildingCompany extends Organization {
 
     public ShipbuildingCompany(String name) {
         super(name);
+        setType("Судостроительная компания");
     }
 
     public String getShip() {
@@ -12,6 +13,6 @@ public class ShipbuildingCompany extends Organization {
 
     @Override
     public String processOperation() {
-        return("Судостроительная компания под названием " + getName() + " построила новое судно с названием: " +  getShip());
+        return(getType() + " под названием " + getName() + " построила новое судно с названием: " +  getShip());
     }
 }

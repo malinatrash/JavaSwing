@@ -1,15 +1,12 @@
 package malinatrash.ConsoleInterface;
 
-import malinatrash.Instances.AircraftFactory;
-import malinatrash.Instances.InsuranceCompany;
-import malinatrash.Instances.ShipbuildingCompany;
-import malinatrash.Model.State;
-
 import java.util.Scanner;
 
 public class Menu {
 
-    private static final Scanner scanner = new Scanner(System.in);
+//    private static final Scanner scanner = new Scanner(System.in);
+
+//    State state = new State();
 
     public static void start() {
         getMainMenu();
@@ -27,27 +24,27 @@ public class Menu {
             System.out.println("0 - Выход из программы\n");
 
             int choice = readChoice();
-            String title;
+//            String title;
 
             switch (choice) {
                 case 1:
                     createCompany();
                     break;
                 case 2:
-                    State.getCompaniesList();
+//                    state.getCompaniesList();
                     break;
                 case 3:
-                    State.doAllActivities();
+//                    state.doAllActivities();
                     break;
                 case 4:
                     System.out.print("Введите название компании, действие которой вы хотите посмотреть: ");
-                    title = scanner.nextLine();
-                    State.doSelectedActivity(title);
+//                    title = scanner.nextLine();
+//                    state.doSelectedActivity(title);
                     break;
                 case 5:
                     System.out.print("Введите название компании, которую вы хотите удалить: ");
-                    title = scanner.nextLine();
-                    State.deleteSelectedCompany(title);
+//                    title = scanner.nextLine();
+//                    state.deleteSelectedCompany(title);
                     break;
                 case 0:
                     working = false;
@@ -65,17 +62,13 @@ public class Menu {
         int choice = Menu.readChoice();
         switch (choice) {
             case 1:
-                System.out.print("Введите название компании: ");
-                State.companies.add(new InsuranceCompany(scanner.nextLine()));
-                return;
             case 2:
-                System.out.print("Введите название компании: ");
-                State.companies.add(new ShipbuildingCompany(scanner.nextLine()));
-                return;
+//                state.companies.add(new ShipbuildingCompany(scanner.nextLine()));
             case 3:
                 System.out.print("Введите название компании: ");
-                State.companies.add(new AircraftFactory(scanner.nextLine()));
+//                state.companies.add(new InsuranceCompany(scanner.nextLine()));
                 return;
+//                state.companies.add(new AircraftFactory(scanner.nextLine()));
             default:
                 createCompany();
         }

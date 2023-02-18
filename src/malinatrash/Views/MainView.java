@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainView extends View {
+    State state = new State();
     public MainView(int width, int height, String title) {
         super(width, height, title);
     }
@@ -36,16 +37,18 @@ public class MainView extends View {
     }
     private void createAddCompanyView() {
         AddCompanyView addCompanyView = new AddCompanyView(500, 130, "Добавить компанию");
+        addCompanyView.state = this.state;
     }
     private void createFindCompanyView() {
         FindCompanyView findCompanyView = new FindCompanyView(500, 100, "Найти компанию");
+        findCompanyView.state = this.state;
     }
     private void getAllActivities() {
-        AllActivitiesView allActivitiesView = new AllActivitiesView(600, 200, "Все активности");
-        allActivitiesView.updateData(State.doAllActivities());
+        AllActivitiesView allActivitiesView = new AllActivitiesView(700, 300, "Все активности");
+        allActivitiesView.getAllActivities(state);
     }
     private void getAllCompanies() {
-        AllActivitiesView allActivitiesView = new AllActivitiesView(600, 200, "Все активности");
-        allActivitiesView.updateData(State.getCompaniesList());
+        AllActivitiesView allActivitiesView = new AllActivitiesView(570, 200, "Все активности");
+        allActivitiesView.getAllCompanies(state);
     }
 }

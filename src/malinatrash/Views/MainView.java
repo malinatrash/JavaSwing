@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainView extends View {
-    AllActivitiesView allActivitiesView = new AllActivitiesView(600, 200, "Все активности");
-    AddCompanyView addCompanyView = new AddCompanyView(500, 130, "Добавить компанию");
-    FindCompanyView findCompanyView = new FindCompanyView(500, 100, "Найти компанию");
     public MainView(int width, int height, String title) {
         super(width, height, title);
     }
@@ -22,24 +19,33 @@ public class MainView extends View {
 
         JButton addButton = new JButton("Добавить");
         buttonsPanel.add(addButton);
-        addButton.addActionListener(e -> addCompanyView.setVisible(true));
+
+        addButton.addActionListener(e -> createAddCompanyView());
 
         JButton findButton = new JButton("Найти");
         buttonsPanel.add(findButton);
-        findButton.addActionListener(e -> findCompanyView.setVisible(true));
+        findButton.addActionListener(e -> createFindCompanyView());
 
         JButton doAllActivitiesButton = new JButton("Посмотреть активности всех компаний");
         buttonsPanel.add(doAllActivitiesButton);
-        doAllActivitiesButton.addActionListener(e -> {
-            allActivitiesView.updateData(State.doAllActivities());
-            allActivitiesView.setVisible(true);
-        });
+        doAllActivitiesButton.addActionListener(e -> getAllActivities());
 
         JButton allCompaniesButton = new JButton("Посмотреть список всех компаний");
         buttonsPanel.add(allCompaniesButton);
-        allCompaniesButton.addActionListener(e -> {
-            allActivitiesView.updateData(State.getCompaniesList());
-            allActivitiesView.setVisible(true);
-        });
+        allCompaniesButton.addActionListener(e -> getAllCompanies());
+    }
+    private void createAddCompanyView() {
+        AddCompanyView addCompanyView = new AddCompanyView(500, 130, "Добавить компанию");
+    }
+    private void createFindCompanyView() {
+        FindCompanyView findCompanyView = new FindCompanyView(500, 100, "Найти компанию");
+    }
+    private void getAllActivities() {
+        AllActivitiesView allActivitiesView = new AllActivitiesView(600, 200, "Все активности");
+        allActivitiesView.updateData(State.doAllActivities());
+    }
+    private void getAllCompanies() {
+        AllActivitiesView allActivitiesView = new AllActivitiesView(600, 200, "Все активности");
+        allActivitiesView.updateData(State.getCompaniesList());
     }
 }

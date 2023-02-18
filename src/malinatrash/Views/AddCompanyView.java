@@ -21,7 +21,6 @@ public class AddCompanyView extends View {
     @Override
     public void viewDidLoad() {
         super.viewDidLoad();
-        setVisible(false);
         JPanel panel = new JPanel();
         add(panel);
         addRadioButtons(panel);

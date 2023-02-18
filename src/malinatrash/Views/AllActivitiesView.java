@@ -2,6 +2,7 @@ package malinatrash.Views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 import static javax.swing.BoxLayout.Y_AXIS;
 
@@ -17,16 +18,11 @@ public class AllActivitiesView extends View {
         okButton.addActionListener(e -> setVisible(false));
         view.add(okButton);
     }
-
-    public String convertToMultiline(String orig)
-    {
+    public String convertToMultiline(String orig) {
         return "<html>" + orig.replaceAll("\n", "<br>");
     }
-
     @Override
     public void viewDidLoad() {
-        super.viewDidLoad();
-        setVisible(false);
     }
     public void updateData(String newData) {
         data.setText(convertToMultiline(newData));

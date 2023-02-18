@@ -43,6 +43,9 @@ public class State {
     }
 
     public static String getCompaniesList() {
+        if (companies.isEmpty()) {
+            return "Добавьте хотя бы одну компанию";
+        }
         StringBuilder message = new StringBuilder();
         for (int i = 0; i < companies.size(); i++) {
             message.append(i + 1).append(" - ").append(companies.get(i).getName());

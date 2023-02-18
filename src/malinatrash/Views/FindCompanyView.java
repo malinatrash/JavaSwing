@@ -15,7 +15,6 @@ public class FindCompanyView extends View {
     @Override
     public void viewDidLoad() {
         super.viewDidLoad();
-        setVisible(false);
         JPanel panel = new JPanel();
         add(panel);
         JTextField companyName = new JTextField(35);
